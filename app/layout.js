@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavSection from "@/components/NavSection";
 import HeroSection from "@/components/HeroSection";
+import { headers } from "next/headers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,6 +21,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const headersList = headers();
+  const currentUrl = headersList.get("referer") || headersList.get("host");
+
+  const isHomePage = currentUrl?.endsWith("");
+
+  // console.log("URL -------- >>>>>", children); //On Dev
+
   return (
     <html lang="en">
       <body
@@ -27,9 +35,9 @@ export default function RootLayout({ children }) {
       >
         <header>
           <NavSection />
-          <HeroSection />
+          {isHomePage && <HeroSection />}
         </header>
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

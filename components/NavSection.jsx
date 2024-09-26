@@ -6,7 +6,7 @@ const NavSection = () => {
   return (
     <nav>
       <div className="container flex justify-between py-6">
-        <Link href="index.html">
+        <Link href="/">
           <Image
             src="/assets/images/logo.png"
             alt=""
