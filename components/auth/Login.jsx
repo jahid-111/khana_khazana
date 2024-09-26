@@ -6,7 +6,7 @@ const Login = () => {
     <section className="h-screen grid place-items-center">
       <div className="max-w-[450px] w-full mx-auto p-6 border border-gray-700/20 rounded-md">
         <h4 className="font-bold text-2xl">Sign in</h4>
-        <htmlForm className="login-htmlFrom">
+        <htmlFor className="login-htmlFrom">
           <div className="form-div">
             <label for="email">Email Address</label>
             <input
@@ -33,7 +33,7 @@ const Login = () => {
           >
             Login
           </button>
-        </htmlForm>
+        </htmlFor>
 
         <p className="text-center text-xs mt-2 text-gray-600">Or</p>
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Categories = () => {
@@ -6,7 +7,7 @@ const Categories = () => {
       <h3 className="font-bold text-xl">Recipes</h3>
       <ul className="pl-2 my-6 space-y-4 text-gray-500 text-sm">
         <li>
-          <a href="#">Morning Bliss Café</a>
+          <Link href="/category/id">Morning Bliss Café</Link>
         </li>
 
         <li>
