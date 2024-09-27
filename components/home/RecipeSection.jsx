@@ -1,8 +1,11 @@
 import React from "react";
 import Categories from "./Categories";
 import Recipe from "./Recipe";
+import { getAllRecipes } from "@/db/queries";
 
-const RecipeSection = () => {
+const RecipeSection = async () => {
+  const allRecipe = await getAllRecipes();
+  console.log(">>>>>allRecipe", allRecipe);
   return (
     <section className="container py-8">
       <div className="grid grid-cols-12 py-4">
