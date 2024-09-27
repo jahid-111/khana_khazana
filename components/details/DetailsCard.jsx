@@ -1,28 +1,30 @@
 import React from "react";
 import ActionDetails from "./ActionDetails";
+import Image from "next/image";
 
-const DetailsCard = () => {
+const DetailsCard = ({ recipe }) => {
+  // console.log("Details Card", recipe);
   return (
     <section>
       <div className="grid grid-cols-12 container gap-8 justify-items-center">
         <div className="col-span-12 md:col-span-6">
-          {/* <img
-            src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600"
+          <Image
+            src="/assets/images/notFoundImage.svg"
             alt=""
             className="w-full h-full rounded-lg object-contain"
-          /> */}
+            width={240}
+            height={240}
+          />
         </div>
         <div className="col-span-12 md:col-span-6 py-8 flex flex-col justify-center">
           <h2 className="font-semibold text-4xl lg:w-8/12 leading-10">
-            White calzones with marinara sauce
+            {recipe?.name}
           </h2>
           <p className="text-xs text-[#eb4a36] italic my-2">
-            Breakfast and Brunch
+            {recipe?.category}
           </p>
           <p className="text-gray-600 text-sm my-6 leading-6">
-            Supermarket brands of ricotta contain stabilizers, which can give
-            the cheese a gummy texture when baked. Check the label and choose
-            ricotta made with as few ingredients as possible.
+            {recipe.description}
           </p>
 
           <div className="flex gap-4 justify-center divide-x my-12">
