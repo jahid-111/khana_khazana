@@ -1,4 +1,5 @@
 import { recipeModel } from "@/models/recipe-models";
+import { userModel } from "@/models/user-models";
 import { replaceMongoInArray } from "@/utils/data-util";
 
 async function getAllRecipes() {
@@ -6,4 +7,7 @@ async function getAllRecipes() {
   return replaceMongoInArray(allRecipes);
 }
 
-export { getAllRecipes };
+async function createUser(user) {
+  return await userModel.create(user);
+}
+export { getAllRecipes, createUser };

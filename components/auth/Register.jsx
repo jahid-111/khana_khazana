@@ -1,3 +1,4 @@
+import { registerUser } from "@/actions";
 import Link from "next/link";
 import React from "react";
 
@@ -6,15 +7,26 @@ const Register = () => {
     <section className="h-screen grid place-items-center">
       <div className="max-w-[450px] w-full mx-auto p-6 border border-gray-700/20 rounded-md">
         <h4 className="font-bold text-2xl">Sign Up</h4>
-        <htmlForm className="login-htmlFrom">
+
+        <form action={registerUser} className="login-htmlFrom">
           <div className="form-div">
-            <label for="fname">First Name</label>
-            <input className="form-input" type="text" name="fname" id="fname" />
+            <label for="firstName">First Name</label>
+            <input
+              className="form-input"
+              type="text"
+              name="firstName"
+              id="firstName"
+            />
           </div>
 
           <div className="form-div">
-            <label for="lname">Last Name</label>
-            <input className="form-input" type="text" name="lname" id="lname" />
+            <label for="lastName">Last Name</label>
+            <input
+              className="form-input"
+              type="text"
+              name="lastName"
+              id="lastName"
+            />
           </div>
           <div className="form-div">
             <label for="email">Email Address</label>
@@ -42,7 +54,7 @@ const Register = () => {
           >
             Create Account
           </button>
-        </htmlForm>
+        </form>
 
         <p className="text-center text-xs mt-2 text-gray-600">Or</p>
 
