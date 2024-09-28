@@ -16,6 +16,12 @@ async function createUser(user) {
   return await userModel.create(user);
 }
 
+async function findUserByCredential(credential) {
+  const user = await userModel.findOne(credential).lean();
+
+  return user;
+}
+
 async function getCategories() {
   const uniqueCategories = await recipeModel.distinct("category");
   return uniqueCategories;
@@ -35,6 +41,7 @@ async function getByCategories(category) {
 export {
   getAllRecipes,
   createUser,
+  findUserByCredential,
   getRecipeById,
   getCategories,
   getByCategories,
