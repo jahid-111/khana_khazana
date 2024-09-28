@@ -1,18 +1,29 @@
 "use client";
 
 import { loginUserAccess } from "@/actions";
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Login = () => {
   const [error, setError] = useState("");
+  const { setAuth } = useAuth();
+  const router = useRouter();
 
   async function onSubmit(event) {
     event.preventDefault();
 
     try {
       const formData = new FormData(event.currentTarget);
-      await loginUserAccess(formData);
+      const userInfo = await loginUserAccess(formData);
+
+      if (userInfo) {
+        setAuth(userInfo);
+        router.push("/");
+      } else {
+        setError("Please Provide Valid Access");
+      }
     } catch (error) {
       setError(error.message);
       console.log(error);

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import AuthDisplay from "./AuthDisplay";
 
 const NavSection = () => {
   return (
@@ -17,6 +18,8 @@ const NavSection = () => {
         </Link>
 
         <ul className="flex gap-4 text-sm text-gray-500">
+          <AuthDisplay />
+
           <li className="py-2 active">
             <Link href="./index.html">Home</Link>
           </li>

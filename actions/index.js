@@ -11,15 +11,14 @@ async function registerUser(formData) {
 }
 
 async function loginUserAccess(formData) {
-  const credential = {};
+  try {
+    const credential = {};
 
-  credential.email = formData.get("email");
-  credential.password = formData.get("password");
-  const user = await findUserByCredential(credential);
-
-  if (user) {
-    redirect("/");
-  } else {
+    credential.email = formData.get("email");
+    credential.password = formData.get("password");
+    const user = await findUserByCredential(credential);
+    return user;
+  } catch (error) {
     throw new Error(`User Not Valid with "${formData.get("email")}"`);
   }
 }

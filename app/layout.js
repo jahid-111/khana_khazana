@@ -4,6 +4,7 @@ import NavSection from "@/components/NavSection";
 import HeroSection from "@/components/HeroSection";
 import { headers } from "next/headers";
 import { dbConnect } from "@/services/mongo";
+import AuthProvider from "@/contexts/provider/AuthProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,11 +36,13 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased md:mx-10 mx-auto`}
       >
-        <header>
-          <NavSection />
-          {isHomePage && <HeroSection />}
-        </header>
-        <main>{children}</main>
+        <AuthProvider>
+          <header>
+            <NavSection />
+            {isHomePage && <HeroSection />}
+          </header>
+          <main>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );
