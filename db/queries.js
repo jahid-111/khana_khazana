@@ -15,4 +15,27 @@ async function getRecipeById(recipeId) {
 async function createUser(user) {
   return await userModel.create(user);
 }
-export { getAllRecipes, createUser, getRecipeById };
+
+async function getCategories() {
+  const uniqueCategories = await recipeModel.distinct("category");
+  return uniqueCategories;
+}
+
+async function getByCategories(category) {
+  const decodedCategory = decodeURIComponent(category);
+  const categoriesArray = decodedCategory.split(",");
+
+  const uniqueCategories = await recipeModel
+    .find({ category: { $in: categoriesArray } })
+    .lean();
+
+  return replaceMongoInArray(uniqueCategories);
+}
+
+export {
+  getAllRecipes,
+  createUser,
+  getRecipeById,
+  getCategories,
+  getByCategories,
+};
