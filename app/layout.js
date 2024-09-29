@@ -43,6 +43,8 @@ export default async function RootLayout({ children }) {
           </header>
           <main>{children}</main>
         </AuthProvider>
+
+        <div id="modal-box"></div>
       </body>
     </html>
   );
