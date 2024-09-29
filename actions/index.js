@@ -1,6 +1,7 @@
 "use server";
 
-import { createUser, findUserByCredential } from "@/db/queries";
+import { createUser, findUserByCredential, updateInterest } from "@/db/queries";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 async function registerUser(formData) {
@@ -23,4 +24,14 @@ async function loginUserAccess(formData) {
   }
 }
 
-export { registerUser, loginUserAccess };
+async function addInterestedRecipe(recipeId, userId) {
+  try {
+    const updatedUser = await updateInterest(recipeId, userId);
+    revalidatePath(`/details/${recipeId}`);
+    return updatedUser;
+  } catch (error) {
+    console.error("Error updating interest:", error);
+  }
+}
+
+export { registerUser, loginUserAccess, addInterestedRecipe };

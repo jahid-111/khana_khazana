@@ -1,6 +1,7 @@
 import { recipeModel } from "@/models/recipe-models";
 import { userModel } from "@/models/user-models";
 import { replaceMongoInArray, replaceMongoInObj } from "@/utils/data-util";
+import mongoose, { Mongoose } from "mongoose";
 
 async function getAllRecipes() {
   const allRecipes = await recipeModel.find().lean();
@@ -41,6 +42,34 @@ async function getByCategories(category) {
   return replaceMongoInArray(uniqueCategories);
 }
 
+async function updateInterest(recipe_id, userId) {
+  const recipe = await recipeModel.findById(recipe_id).lean();
+
+  if (!recipe) {
+    throw new Error("Recipe not found");
+  }
+
+  const user = await userModel.findById(userId);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const recipeExists = user.favourites.includes(recipe_id);
+
+  if (recipeExists) {
+    user.favourites.pull(recipe_id);
+  } else {
+    user.favourites.push(recipe_id);
+  }
+
+  await user.save();
+
+  console.log(user.favourites);
+
+  return replaceMongoInObj(user.toObject());
+}
+
 export {
   getAllRecipes,
   createUser,
@@ -48,4 +77,5 @@ export {
   getRecipeById,
   getCategories,
   getByCategories,
+  updateInterest,
 };

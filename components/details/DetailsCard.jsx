@@ -98,7 +98,7 @@ const DetailsCard = ({ recipe }) => {
               <p className="text-gray-500 text-sm">4</p>
             </div>
           </div>
-          <ActionDetails />
+          <ActionDetails recipeID={recipe?.id} />
         </div>
       </div>
     </section>
