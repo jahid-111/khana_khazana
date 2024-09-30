@@ -1,12 +1,11 @@
 import RecipeSection from "@/components/home/RecipeSection";
+import Loading from "@/components/Loading";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <div>
-      <h3 className=" text-center text-red-700  text-4xl">
-        KhanaKhazana - HOME
-      </h3>
+    <Suspense fallback={<Loading />}>
       <RecipeSection />
-    </div>
+    </Suspense>
   );
 }

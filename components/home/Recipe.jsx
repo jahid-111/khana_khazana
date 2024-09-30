@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import RecipeSeoScript from "../meta/RecipeSeoScript";
 
 const Recipe = ({ recipe }) => {
   return (
     <div className="card bg-gray-100 rounded-md p-2">
+      <RecipeSeoScript recipe={recipe} />
       <Link href={`/details/${recipe?.id}`}>
         <Image
           //"recipe.thumbnail" 404 in server

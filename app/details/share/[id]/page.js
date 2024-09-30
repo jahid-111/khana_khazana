@@ -1,14 +1,15 @@
+import Loading from "@/components/Loading";
 import Modal from "@/components/ShareModal";
 import ShareOption from "@/components/ShareOption";
-import React from "react";
+import React, { Suspense } from "react";
 
 const SharePage = ({ params: { id } }) => {
   return (
-    <div>
+    <Suspense fallback={<Loading />}>
       <Modal id={id}>
-        <ShareOption id={id}></ShareOption>
+        <ShareOption id={id} />
       </Modal>
-    </div>
+    </Suspense>
   );
 };
 
