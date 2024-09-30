@@ -19,7 +19,6 @@ const RecipeDetailsPage = async ({ params: { id } }) => {
 
   return (
     <div>
-      <h3 className="text-red-600"> Details ID {id}</h3>
       <Suspense fallback={<Loading />}>
         <DetailsCard recipe={recipe} />
         <h3 className=" text-orange-600 font-semibold text-3xl my-10 underline">

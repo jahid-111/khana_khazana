@@ -1,10 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import NavSection from "@/components/NavSection";
-import HeroSection from "@/components/HeroSection";
-import { headers } from "next/headers";
+
 import { dbConnect } from "@/services/mongo";
 import AuthProvider from "@/contexts/provider/AuthProvider";
+import Header from "@/components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,22 +24,13 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   await dbConnect(); //Database from MongoDb
 
-  const headersList = headers();
-  const currentUrl = headersList.get("referer") || headersList.get("host");
-  const isHomePage = currentUrl?.endsWith("");
-
-  // console.log("URL -------- >>>>>", children); //On Dev
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased md:mx-10 mx-auto`}
       >
         <AuthProvider>
-          <header>
-            <NavSection />
-            {isHomePage && <HeroSection />}
-          </header>
+          <Header />
           <main>{children}</main>
         </AuthProvider>
 

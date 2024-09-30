@@ -18,18 +18,16 @@ const NavSection = () => {
         </Link>
 
         <ul className="flex gap-4 text-sm text-gray-500">
-          <AuthDisplay />
-
           <li className="py-2 active">
-            <Link href="./index.html">Home</Link>
+            <Link href="/">Home</Link>
           </li>
 
           <li className="py-2">
-            <Link href="./index.html">Recipe</Link>
+            <Link href="">Recipe</Link>
           </li>
 
           <li className="py-2">
-            <Link href="/index.html">About us</Link>
+            <Link href="/">About us</Link>
           </li>
 
           <li className="py-2 bg-[#eb4a36] px-6 rounded-md text-white content-center">

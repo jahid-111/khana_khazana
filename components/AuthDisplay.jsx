@@ -7,13 +7,9 @@ const AuthDisplay = () => {
   const { auth } = useAuth();
   return (
     <>
-      {auth ? (
+      {auth && (
         <li className="py-2">
           {auth?.firstName} {auth?.lastName}
-        </li>
-      ) : (
-        <li>
-          <Link href="/login">Login</Link>
         </li>
       )}
     </>
